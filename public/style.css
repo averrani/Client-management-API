@@ -39,3 +39,35 @@ h1{
 .stable tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
+
+div#add{
+    position: relative;
+    left: 85%;
+}
+
+.button1 {
+  position: relative;
+  left: 88%;
+  background-color: #009879;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: #009879 0 1px 30px;
+  transition-duration: .1s;
+}
