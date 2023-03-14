@@ -1,6 +1,6 @@
 
 function read() {
-    
+  
     //on recupere le div container
     let container = document.getElementById("container");
   
@@ -48,4 +48,13 @@ function read() {
       });
     
 }
-  
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const data = new FormData(event.target);
+
+  const value = Object.fromEntries(data.entries());
+
+  console.log({ value });
+}

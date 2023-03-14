@@ -9,8 +9,39 @@
     <main>
         <h1>Ajouter un client</h1>  
     </main>
-    <button class="button-36" onclick="window.location.href='list.html';" role="button">Ajouter un client</button>
+    <form>
+
+      <label for="id">id</label>
+      <input type="text" name="id" id="id" />
+
+      <label for="first">first</label>
+      <input type="text" name="first" id="first" />
+
+      <label for="last">last</label>
+      <input type="text" name="last" id="last" />
+    
+      <label for="company">company</label>
+      <input type="text" name="company" id="company" />
+
+      <label for="created">created at</label>
+      <input type="date" name="created" id="created" />
+
+      <label for="country">country</label>
+      <input type="text" name="country" id="country" />
+   
+       <label for="email">Email</label>
+       <input type="email" name="email" id="email" />
+   
+       <button type="submit">Submit</button>
+     </form>
+
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleSubmit);
+    </script>
+
     <div id="container"></div>
-    <script> read();</script> 
+    <button class="button1" onclick="window.location.href='list.html';" role="button">Ajouter un client</button>
+    
   </body>
 </html>
