@@ -19,3 +19,9 @@ société
 pays (auto généré coté serveur) - date de création (auto généré coté serveur) - id = identifiant unique
 Modification d'un client
 Mettre les controles de champs pour la creation de client
+
+modules :
+Express 
+eslint
+react : npx creat-react-app .
+nodemon : redemarrage auto server 
