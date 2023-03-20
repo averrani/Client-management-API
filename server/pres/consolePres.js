@@ -1,4 +1,3 @@
-const fs = require('fs');
 const chalk = require('chalk');
 let readlineSync = require('readline-sync');
 
@@ -26,7 +25,9 @@ const consolePres = {
             console.log(chalk.blue(" -1- Afficher la liste des pays et le compteur"));
             console.log(chalk.blue(" -2- Afficher la liste des sociétés et le compteur"));
             console.log(chalk.blue(" -3- Afficher toute la liste"));
-            console.log(chalk.blue(" -4- Ajouter un utilisateur \n"));
+            console.log(chalk.blue(" -4- Ajouter un utilisateur "));
+            console.log(chalk.blue(" -5- Retirer un utilisateur \n"));
+            
 
             input = readlineSync.question(chalk.yellow('Quel est votre choix ? \n'));
         }
@@ -82,15 +83,12 @@ const consolePres = {
                 country: country1
             };
 
-            users.push(user)
+            business.addUser(user);
+        }
 
-            var newdata = JSON.stringify(users);
-            fs.writeFile('users.json', newdata, err => {
-                // error checking
-                if (err) throw err;
-
-                console.log(chalk.yellow("Utilisateur ajouté"));
-            });
+        function removeUser(){
+            id = readlineSync.question(chalk.green('Quel est l`id ? \n')); 
+            business.removeUser(id);
         }
 
 
@@ -105,6 +103,8 @@ const consolePres = {
                 console.log(users);
             } else if (input === '4') {
                 addUser();
+            } else if (input === '5') {
+                removeUser();
             }
         }
 

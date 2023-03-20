@@ -29,6 +29,15 @@ const business = {
 
         return clients;
     },
+
+    addUser : function(user){
+        data.addUser(user);
+    },
+
+    removeUser : function(user){
+        data.removeUser(user);
+    }
+
 };
 
 module.exports = business;

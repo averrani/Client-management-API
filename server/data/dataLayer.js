@@ -11,7 +11,7 @@ let data = {
         //return object
         return clients;
     },
-    
+
     //renvoie que les number clients de la page page
     getClients : function(number, page){
         //get data from json file
@@ -34,7 +34,35 @@ let data = {
 
         //return object
         return clients;
+    },
+
+    addUser : function(user){
+        //get data from json file
+        const rawdata = fs.readFileSync(file);
+        //parse to object
+        let clients = JSON.parse(rawdata);
+
+        clients.push(user);
+
+        var newdata = JSON.stringify(clients);
+
+        fs.writeFile(file, newdata, err => {
+            if (err) throw err;
+        });
+
+    },
+    //retire l'user en fonction de son id
+    removeUser : function(removeuser){
+        //get data from json file
+        const rawdata = fs.readFileSync(file);
+        //parse to object
+        let clients = JSON.parse(rawdata);
+
+        //filter permet de retirer un user en fonction du param removeuser
+        clients = clients.filter((user) => { return user.id !== removeuser });
+        fs.writeFileSync(file, JSON.stringify(clients, null, 2));
     }
+
 };  
 
 module.exports = data;
