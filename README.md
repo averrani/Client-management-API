@@ -25,3 +25,5 @@ Express
 eslint
 react : npx creat-react-app .
 nodemon : redemarrage auto server 
+
+kill -9 $(lsof -t -i:3001)

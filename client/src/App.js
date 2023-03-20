@@ -24,7 +24,10 @@ function App() {
     //ici le tableau est vide : le code est executé que qd le code est monté, 1 seule fois 
     return (
     <div>
-        app
+        {(typeof backendData === 'undefined') ? (
+            <p>Loading ...</p>
+        ): (console.log(backendData)
+        )}
     </div>
     )
 }
