@@ -11,9 +11,11 @@ const business = {
 
     getClients : function(number, page){
         //initialise les pages si non fait
-        if(page == undefined || number == undefined){ // == ou === ?????
-            number = defaultNumber;
+        if(page == undefined ){ // == ou === ?????
             page = defaultPage;
+        }
+        if(number == undefined ){ // == ou === ?????
+            number = defaultNumber;
         }
         //etablit une val max a pas depasser
         if(number > maxNumber)

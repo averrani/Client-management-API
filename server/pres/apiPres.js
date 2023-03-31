@@ -1,14 +1,16 @@
 const express = require('express');
 const business = require('../business/business');
-
 const app = express();
+var cors = require('cors')
 
 const apiServ = {
     
     //fct qui recupere les données et les renvoie au path indiqué
     start : function(port) {
-        app.use(express.json()); 
 
+        app.use(express.json()); 
+        
+        app.use(cors()); 
         //on recupere les donnees du users.json
         // app.get('/api', (req,res) => {    
         // });
