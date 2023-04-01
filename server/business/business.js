@@ -36,6 +36,10 @@ const business = {
         data.addUser(user);
     },
 
+    updateUser : function(user){
+        data.updateUser(user);
+    },
+
     removeUser : function(user){
         data.removeUser(user);
     }

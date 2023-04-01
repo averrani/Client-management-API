@@ -51,6 +51,28 @@ let data = {
         });
 
     },
+
+    updateUser : function(user){
+        // Charge le contenu du fichier JSON
+        const data = fs.readFileSync(file);
+        const clients = JSON.parse(data);
+
+        // Trouve l'objet à mettre à jour
+        const objectid = clients.findIndex(obj => obj.id === user.id);
+
+        // Si l'objet existe, met à jour ses propriétés avec les données fournies
+        if (objectid !== -1) {
+            const updatedObject = { ...clients[objectid], ...user };
+            clients[objectid] = updatedObject;
+            // Écrit le nouveau contenu du fichier JSON
+            const updatedData = JSON.stringify(clients, null, 2);
+            fs.writeFileSync(file, updatedData);
+            console.log(`success`);
+        } else {
+            console.log(`error`);
+        }
+    },
+
     //retire l'user en fonction de son id
     removeUser : function(removeuser){
         //get data from json file
