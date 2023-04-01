@@ -69,6 +69,7 @@ function colorPage(){
 }
 
 function changeParam(param, value){
+  //if(value == MAX)
   //on recupere l'url et on la transforme en objet url
   var search_params = url.searchParams;
   search_params.set(param, value);
@@ -110,6 +111,7 @@ function createPagin(){
       a.innerText = i;
       e.appendChild(a);
     }
+    //on colore la page actuelle
     colorPage();
   });
 }

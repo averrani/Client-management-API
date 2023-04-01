@@ -14,7 +14,7 @@ const consolePres = {
          */
         function getData() {
             users = business.getAllClients();
-            return users;
+            return users; //ENLEVER
         }
 
         /**
@@ -34,7 +34,7 @@ const consolePres = {
 
         function getElement(elt) {
             //on met que les elt selectiones dans elt
-
+            console.log(users);
             if (elt === country) {
                 for (i = 0; i < users.length; i++) {
                     elt[i] = users[i].country;
@@ -44,7 +44,7 @@ const consolePres = {
                     elt[i] = users[i].company;
                 }
             }
-
+            console.log(users[2]);
             // on compte les elt et on les met dans l'objet counts
             const counts = {};
             for (const num of elt) {
@@ -95,10 +95,8 @@ const consolePres = {
         function cases(input) {
             if (input === '1') {
                 getElement(country);
-
             } else if (input === '2') {
                 getElement(company);
-
             } else if (input === '3') {
                 console.log(users);
             } else if (input === '4') {
@@ -111,6 +109,8 @@ const consolePres = {
         function main() {
             getData();
             printQst();
+            country = new Array(users.length);
+            company = new Array(users.length);
             cases(input);
         }
 
