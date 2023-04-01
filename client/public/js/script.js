@@ -2,6 +2,9 @@ var url = new URL("http://localhost:3001/api/clients");
 
 function create_tab(){
   $.get(url, function (data) {
+    //on vide le div container puis on cree le tableau
+    document.getElementById("cont").innerHTML = "";
+
     //on recupere le div container
     let container = document.getElementById("cont");
   
@@ -50,9 +53,22 @@ function create_tab(){
   });
 }
 
+function getTotalPages(){
+  //on recupere le nombre de pages
+  let nbpages;
+  $.ajax({
+    url: url,
+    async: false,
+    success: function(data){
+      nbpages = data.totalPages;
+    }
+  });
+  return nbpages;
+}
+
 function addRemovePage(param){
   //on recupere l'url et on la transforme en objet url et on fait des verifications pour ne pas depasser les bornes
-  let page = url.searchParams.get('page'); if (!page) page = 1; if(page == 1 && param == "-") return; if(page == 1000 && param == "+") return;
+  let page = url.searchParams.get('page'); if (!page) page = 1; if(page == 1 && param == "-") return; if(page == getTotalPages() && param == "+") return;
 
   //on change la page en fonction du parametre puis on change l'url
   if(param == "+")
@@ -69,7 +85,11 @@ function colorPage(){
 }
 
 function changeParam(param, value){
-  //if(value == MAX)
+  // si on veut aller a la derniere page, on recupere le nombre de pages (last) et on change la valeur
+  if(value == 'last'){
+    value = getTotalPages();
+  }
+  
   //on recupere l'url et on la transforme en objet url
   var search_params = url.searchParams;
   search_params.set(param, value);
@@ -77,11 +97,11 @@ function changeParam(param, value){
   // replace current query string with new params
   url.search = search_params.toString();
 
-  //on vide le div container puis on recree le tableau
-  document.getElementById("cont").innerHTML = "";
+  //on recree le tableau et la pagination
   create_tab();
-  document.getElementById("pagin").innerHTML = "";
-  createPagin();
+  if(param == 'page'){
+    createPagin();
+  }
 }
 
 function changeSelectValue(){
@@ -90,9 +110,16 @@ function changeSelectValue(){
   //on change l'url
   changeParam('number', e.value);
   
+  //on verifie que la page actuelle n'est pas superieure au nombre de pages
+  let page = url.searchParams.get('page');
+  let totalPages = getTotalPages();
+  if (page > totalPages) { page = totalPages; changeParam('page', page);}
 }
 
 function createPagin(){
+  //on vide la pagination actuelle
+  document.getElementById("pagin").innerHTML = "";
+
   //on recupere la page actuelle
   let page = url.searchParams.get('page'); if (!page) page = 1;
   let e = document.getElementById("pagin");
@@ -123,11 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //si on change le nombre d'éléments à afficher, on appelle changeSelectValue
   document.getElementById("nbelt").addEventListener("change", changeSelectValue);
   //on crée la pagination initiale
-  createPagin();
-  let TAG = document.querySelector("#page1");
-  console.log(TAG);
-  TAG.setAttribute('class', "page-link active");
-  
+  createPagin();  
 });
 
 
