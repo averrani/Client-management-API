@@ -78,13 +78,17 @@ let data = {
         //get data from json file
         const rawdata = fs.readFileSync(file);
         //parse to object
-        let clients = JSON.parse(rawdata);
-
+        let newclients = JSON.parse(rawdata);
         //filter permet de retirer un user en fonction du param removeuser
-        clients = clients.filter((user) => { return user.id !== removeuser });
-        fs.writeFileSync(file, JSON.stringify(clients, null, 2));
+        const id = newclients.findIndex(user => user.id === parseInt(removeuser));
+        console.log(id);
+        if (id !== -1) {
+            newclients.splice(id, 1);
+            fs.writeFileSync(file, JSON.stringify(newclients, null, 2));
+            return { success: true, message: "Utilisateur supprimé avec succès." };
+        } else 
+          return { success: false, message: "ID d'utilisateur non trouvé." };        
     }
-
 };  
 
 module.exports = data;

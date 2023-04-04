@@ -45,6 +45,12 @@ const apiServ = {
             res.status(200).send({status: 'ok'});
         })
 
+        app.delete('/api/clients', (req, res) => {
+            const clientid = req.query.id;
+            business.removeUser(clientid);
+            res.status(200).send({status: 'ok'});
+        })
+        
         //lance l'ecoute
         app.listen(port, () => {
             console.log(`App listening on port ${port}`)

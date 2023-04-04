@@ -89989,14 +89989,5 @@
     "company": "Facebook",
     "created_at": "2015-01-21T11:20:51.483Z",
     "country": "Niger"
-  },
-  {
-    "id": 10000,
-    "email": "aris.issad@gmail.com",
-    "first": "ISSAD",
-    "last": "Aris",
-    "company": "Google",
-    "created_at": "2023-04-01T17:54:36.386Z",
-    "country": "France"
   }
 ]

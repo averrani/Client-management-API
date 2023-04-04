@@ -38,7 +38,7 @@ function getTotalClients(){
 
 function handleSubmit() {
     let id = parseInt(document.getElementById("id").value);
-    if(id>0 && id <= getTotalClients){
+    if(id>0 && id <= getTotalClients()){
     //on cree un objet client avec les valeurs du formulaire
     let client = {
         id: id,
