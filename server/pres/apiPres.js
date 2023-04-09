@@ -25,7 +25,6 @@ const apiServ = {
             
             const number = req.query.number;
             const page = req.query.page;
-            
             const clients = business.getClients(number, page);
 
             //transforme en flux lisible par le navigateur
@@ -34,21 +33,19 @@ const apiServ = {
 
         //ajoute un user
         app.post('/api/clients', (req, res) => {
-            business.addUser(req.body);
-            res.status(200).send({status: 'ok'});
+            let message = business.addUser(req.body);
+            res.status(200).send(message);
         })
         
-        app.put('/api/clients/all', (req, res) => {
-            const clientid = req.body;
-            console.log(clientid);
-            business.updateUser(req.body);
-            res.status(200).send({status: 'ok'});
+        app.put('/api/clients', (req, res) => {
+            let message = business.updateUser(req.body);
+            res.status(200).send(message);
         })
 
         app.delete('/api/clients', (req, res) => {
             const clientid = req.query.id;
-            business.removeUser(clientid);
-            res.status(200).send({status: 'ok'});
+            let message = business.removeUser(clientid);
+            res.status(200).send(message);
         })
         
         //lance l'ecoute

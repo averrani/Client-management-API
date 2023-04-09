@@ -1,4 +1,4 @@
-var url = new URL("http://localhost:3001/api/clients/all");
+var url = new URL("http://localhost:3001/api/clients");
 
 document.addEventListener("DOMContentLoaded", function () {
     const id = document.getElementById("id");
@@ -23,28 +23,14 @@ function handleChange() {
     });
 }
 
-function getTotalClients(){
-    //on recupere le nombre de clients
-    let nbclients; 
-    $.ajax({
-      url: url,
-      async: false,
-      success: function(data){
-        nbclients = data.total;
-      }
-    });
-    return nbclients;
-  }
-
 function handleSubmit() {
     let id = parseInt(document.getElementById("id").value);
-    if(id>0 && id <= getTotalClients()){
     //on cree un objet client avec les valeurs du formulaire
     let client = {
         id: id,
         email: document.getElementById("email").value,
-        first: document.getElementById("name").value,
-        last: document.getElementById("name2").value,
+        first: document.getElementById("name2").value,
+        last: document.getElementById("name").value,
         company: document.getElementById("society").value,
         created_at: document.getElementById("date").value,
         country: document.getElementById("country").value
@@ -55,11 +41,9 @@ function handleSubmit() {
         method: "PUT",
         contentType: "application/json",
         data: JSON.stringify(client),
-        success: function (data) {
-            console.log(data);
+        success: function (response){
+            console.log("eeeeee");
+            alert(response.message);
         }
     });
-    }else{
-        alert("L'id doit etre compris entre 1 et "+getTotalClients());
-    }
 }

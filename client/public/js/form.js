@@ -27,8 +27,8 @@ function handleSubmit() {
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(client),
-        success: function (data) {
-            console.log(data);
+        success: function (response) {
+            alert(response.message);
         }
     });
 

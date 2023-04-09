@@ -34,14 +34,19 @@ const business = {
 
     addUser : function(user){
         data.addUser(user);
+        return { success: true, message: "Utilisateur ajouté avec succès." };
     },
 
     updateUser : function(user){
-        data.updateUser(user);
+        let nb = data.updateUser(user);
+        if(nb) return { success: true, message: "Utilisateur modifié avec succès." };
+        else return { success: false, message: "Erreur lors de la modification du client." };
     },
 
     removeUser : function(user){
-        data.removeUser(user);
+        let nb = data.removeUser(user);
+        if(nb) return { success: true, message: "Utilisateur supprimé avec succès." };
+        else return { success: false, message: "ID d'utilisateur non trouvé." };
     }
 
 };

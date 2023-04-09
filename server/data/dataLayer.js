@@ -67,9 +67,9 @@ let data = {
             // Écrit le nouveau contenu du fichier JSON
             const updatedData = JSON.stringify(clients, null, 2);
             fs.writeFileSync(file, updatedData);
-            console.log(`success`);
+            return 1;
         } else {
-            console.log(`error`);
+            return 0;
         }
     },
 
@@ -79,15 +79,16 @@ let data = {
         const rawdata = fs.readFileSync(file);
         //parse to object
         let newclients = JSON.parse(rawdata);
-        //filter permet de retirer un user en fonction du param removeuser
+        //findIndex permet de retrouver un user en fonction du param removeuser
         const id = newclients.findIndex(user => user.id === parseInt(removeuser));
-        console.log(id);
-        if (id !== -1) {
+        if (id != -1) {
+            //puis de le retirer s'il existe 
             newclients.splice(id, 1);
+            //et de reecrire le fichier
             fs.writeFileSync(file, JSON.stringify(newclients, null, 2));
-            return { success: true, message: "Utilisateur supprimé avec succès." };
+            return 1;
         } else 
-          return { success: false, message: "ID d'utilisateur non trouvé." };        
+          return 0;        
     }
 };  
 
