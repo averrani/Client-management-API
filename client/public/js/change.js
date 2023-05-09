@@ -1,4 +1,5 @@
 var url = new URL("http://localhost:3001/api/clients");
+var url2 = new URL("http://localhost:3001/api/clients/all");
 
 document.addEventListener("DOMContentLoaded", function () {
     const id = document.getElementById("id");
@@ -6,15 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function handleChange() {
-    $.get(url, function (data) {
+    $.get(url2, function (data) {
         //on récupère l'élement correspondant à l'id
         let item = data.clients[parseInt(id.value) - 1];
-        console.log(item);
         //on remplit les champs avec les valeurs de l'élément
         document.getElementById("email").value = item.email;
         document.getElementById("name2").value = item.first;
         document.getElementById("name").value = item.last;
-        document.getElementById("society").value = item.company;
+        document.getElementById("society").value = item.company; 
         document.getElementById("country").value = item.country;
         //on formate la date pour l'afficher dans le bon format
         const date = new Date(item.created_at);
@@ -42,7 +42,6 @@ function handleSubmit() {
         contentType: "application/json",
         data: JSON.stringify(client),
         success: function (response){
-            console.log("eeeeee");
             alert(response.message);
         }
     });

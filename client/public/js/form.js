@@ -27,8 +27,18 @@ function handleSubmit() {
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(client),
-        success: function (response) {
-            alert(response.message);
+        //en cas de succes
+        success: function () {
+            $("#alert-message").attr('class', 'alert alert-success');
+            $("#alert-message").html("Client ajouté");
+            alert("Client ajouté");
+            console.log("done");
+        },
+
+    //si erreur
+        error: function (xhr) {
+            $("#alert-message").attr('class', 'alert alert-danger');
+            $("#alert-message").html(xhr.responseText);
         }
     });
 
