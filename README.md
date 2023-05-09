@@ -6,23 +6,23 @@ La partie Backend est dans le dossier server, le dossier client contient la part
 
 Modules utilisés :
 
-. Express 
+- Express 
 
-. Eslint
+- Eslint
 
-. Nodemon : redémarrage automatique du serveur 
+- Nodemon : redémarrage automatique du serveur 
 
-. Cors : compatibilité 
+- Cors : compatibilité 
 
 COMMENT EXECUTER L'API : 
 
-- ouvrir avec la console les sous-dossiers client et server
+1- ouvrir avec la console les sous-dossiers client et server
 
-- Pour chacun d'entre eux, lancer `npm i dependencies`
+2- Pour chacun d'entre eux, lancer `npm i dependencies`
 
-- Pour chacun d'entre eux, lancer `npm run dev`
+3- Pour chacun d'entre eux, lancer `npm run dev`
 
-- Ouvir le navigateur et taper "http://localhost:3000/list.html"
+4- Ouvir le navigateur et taper "http://localhost:3000/list.html"
 
 
 kill -9 $(lsof -t -i:3001)
